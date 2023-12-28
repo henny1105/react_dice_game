@@ -1,17 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ReactDOM.render(
+	// class와 for는 html 문법 그대로 사용할 수 없음
+	<h1 className='hello'>안녕 리액트!</h1>,
+	// 1. class => className 으로 사용해야함
+	<form action=''>
+		<label htmlFor='name'>이름</label>
+		<input id='name' type='text' onBlur='' onFocus='' onMouseDown='' />
+	</form>,
+	// 2. label의 for 태그는 htmlFor로 사용해야함
+	// Camel Case로 작성해주기
+	document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
