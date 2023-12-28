@@ -1,14 +1,23 @@
+import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-	// class와 for는 html 문법 그대로 사용할 수 없음
-	<h1 className='hello'>안녕 리액트!</h1>,
-	// 1. class => className 으로 사용해야함
-	<form action=''>
-		<label htmlFor='name'>이름</label>
-		<input id='name' type='text' onBlur='' onFocus='' onMouseDown='' />
-	</form>,
-	// 2. label의 for 태그는 htmlFor로 사용해야함
-	// Camel Case로 작성해주기
+	<div>
+		<p>안녕</p>
+		<p>리액트</p>
+	</div>,
+
+	// 리액트는 div안에 모두 감싸줘야한 div를 쓰고 싶지 않다면?
+	// Fragment로 감싸주기
+	<Fragment>
+		<p>안녕</p>
+		<p>리액트</p>
+	</Fragment>,
+
+	// 이름 없는 프래그먼트도 사용가능
+	<>
+		<p>안녕</p>
+		<p>리액트</p>
+	</>,
 	document.getElementById('root')
 );
