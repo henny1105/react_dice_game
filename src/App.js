@@ -3,7 +3,7 @@ import Dice from './Dics';
 function App() {
 	return (
 		<div>
-			<Dice />
+			<Dice color='red' />
 		</div>
 	);
 }
