@@ -1,11 +1,15 @@
+import Button from './Button';
 import Dice from './Dics';
 
 function App() {
 	return (
 		<div>
+			<div>
+				<Button>던지기</Button>
+				<Button>처음부터</Button>
+			</div>
 			<Dice color='red' num={2} />
 		</div>
 	);
 }
-// 자바스크립트에서 숫자를 쓰려면 반드시 중괄호 활용하기
 export default App;
