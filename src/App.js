@@ -3,17 +3,14 @@ import Board from './Board';
 import Button from './Button';
 import './App.css';
 
-// 랜덤 함수
 function random(n) {
 	return Math.ceil(Math.random() * n);
 }
 
 function App() {
-	// 각각 사용자와 상대방 주사위 기록을 저장함
 	const [myHistory, setMyHistory] = useState([]);
 	const [otherHistory, setOtherHistory] = useState([]);
 
-	// 랜덤으로 숫자를 생성하고 이전기록에 추가함
 	const handleRollClick = () => {
 		const nextMyNum = random(6);
 		const nextOtherNum = random(6);
@@ -22,23 +19,26 @@ function App() {
 		setOtherHistory([...otherHistory, nextOtherNum]);
 	};
 
-	// 기록을 초기화 하는 함수
 	const handleClearClick = () => {
 		setMyHistory([]);
 		setOtherHistory([]);
 	};
+
 	return (
 		<div className='App'>
 			<div>
-				<Button className='App-button' color='blue' onClick={handleRollClick}>
+				<h1 className='App-title'>주사위게임</h1>
+				<Button className='Button blue App-button' color='blue' onClick={handleRollClick}>
 					던지기
 				</Button>
-				<Button className='App-button' color='red' onClick={handleClearClick}>
+				<Button className='Button red App-button' color='red' onClick={handleClearClick}>
 					처음부터
 				</Button>
 			</div>
-			<div>
+			<div className='Board App-board'>
 				<Board name='나' color='blue' gameHistory={myHistory} />
+			</div>
+			<div className='Board App-board'>
 				<Board name='상대' color='red' gameHistory={otherHistory} />
 			</div>
 		</div>
