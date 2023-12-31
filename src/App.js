@@ -2,38 +2,29 @@ import { useState } from 'react';
 import Board from './Board';
 import Button from './Button';
 
+// 랜덤 함수
 function random(n) {
 	return Math.ceil(Math.random() * n);
 }
 
 function App() {
-	const [num, setNum] = useState(1);
-	const [sum, setSum] = useState(0);
-	const [gameHistory, setgameHistory] = useState([]);
-	const [otherNum, setOtherNum] = useState(1);
-	const [otherSum, setOtherSum] = useState(0);
-	const [otherGameHistory, setOthergameHistory] = useState([]);
+	// 각각 사용자와 상대방 주사위 기록을 저장함
+	const [myHistory, setMyHistory] = useState([]);
+	const [otherHistory, setOtherHistory] = useState([]);
 
+	// 랜덤으로 숫자를 생성하고 이전기록에 추가함
 	const handleRollClick = () => {
-		const nextNum = random(6);
+		const nextMyNum = random(6);
 		const nextOtherNum = random(6);
-		setNum(nextNum);
-		setSum(sum + nextNum);
-		setgameHistory([...gameHistory, nextNum]);
 
-		setOtherNum(nextOtherNum);
-		setOtherSum(otherSum + nextOtherNum);
-		setOthergameHistory([...otherGameHistory, nextOtherNum]);
+		setMyHistory([...myHistory, nextMyNum]);
+		setOtherHistory([...otherHistory, nextOtherNum]);
 	};
 
+	// 기록을 초기화 하는 함수
 	const handleClearClick = () => {
-		setNum(1);
-		setSum(0);
-		setgameHistory([]);
-
-		setOtherNum(1);
-		setOtherSum(0);
-		setOthergameHistory([]);
+		setMyHistory([]);
+		setOtherHistory([]);
 	};
 	return (
 		<div>
@@ -42,8 +33,8 @@ function App() {
 				<Button onClick={handleClearClick}>처음부터</Button>
 			</div>
 			<div>
-				<Board name='나' color='blue' num={num} sum={sum} gameHistory={gameHistory} />
-				<Board name='상대' color='red' num={otherNum} sum={otherSum} gameHistory={otherGameHistory} />
+				<Board name='나' color='blue' gameHistory={myHistory} />
+				<Board name='상대' color='red' gameHistory={otherHistory} />
 			</div>
 		</div>
 	);
